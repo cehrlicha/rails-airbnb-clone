@@ -9,10 +9,21 @@ class FriendsController < ApplicationController
   end
 
   def new
+    @friend = Friend.new
+
+    @user = User.find(params[:user_id])
 
   end
 
   def create
+
+    @friend = Friend.new(friend_params)
+
+    if @friend.save
+      redirect_to user_path(@friend.user)
+    else
+      render 'new'
+    end
 
   end
 
@@ -26,4 +37,11 @@ class FriendsController < ApplicationController
   def update
 
   end
+
+  private
+  def friend_params
+    params.require(:friend).permit(:name, :age, :description, :gender, :city, :user_id)
+  end
+
+
 end
