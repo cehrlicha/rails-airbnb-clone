@@ -1,0 +1,9 @@
+    <%= simple_form_for [@user, @friend], :url => user_friends_path, :method => :post do |f| %>
+      <%= f.input :name, error: 'Please enter the name of your cocktail' %>
+      <%= f.input :age, error: 'Please enter the age' %>
+      <%= f.input :gender, collection: ['male', 'female'], error: 'Please enter gender' %>
+      <%= f.input :city, error: 'Please enter city' %>
+      <%= f.input :description, error: 'Please describe your friend' %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>

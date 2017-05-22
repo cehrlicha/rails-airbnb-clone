@@ -1,0 +1,25 @@
+<h1><%= @user.email %></h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+        <% @user.friends.each do |friend| %>
+           <div><%= friend.name %> - <%= friend.age %>
+          <%= friend.description %>
+          <%= friend.city %></div>
+        <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+    <%= link_to "Add a new friend", new_user_friend_path(@user), class:"btn btn-primary" %>
+
+    </div>
+  </div>
+</div>

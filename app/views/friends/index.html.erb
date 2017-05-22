@@ -1,13 +1,13 @@
-<h1>All the friends you can rent</h1>
+<h1>Friends</h1>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
         <% @friends.each do |friend| %>
-           <div><%= friend.name %> - <%= friend.age %>
+          <%= friend.name %> - <%= friend.age %>
           <%= friend.description %>
-          <%= friend.city %></div>
+          <%= friend.city %>
         <% end %>
 
     </div>
