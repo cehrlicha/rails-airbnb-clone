@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-6">
+        <h2 class= "text-center"><%= @friend.name %></h2>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-6">
+        <div  class= "text-center">
+          <div>
+          <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :fill %>
+          </div>
+          <div class="description">
+            <p> <em> <%= @friend.description %> </em></p>
+          </div>
+        </div>
+
+        <div class="text-center description">
+          <%= link_to "Back to list", root_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
