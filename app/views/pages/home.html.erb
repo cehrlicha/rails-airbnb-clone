@@ -2,15 +2,11 @@
   <div class="banner-content">
     <h1>Make real friends</h1>
     <p>Always open for a new buddy</p>
-    <form action="#" class="form-inline">
-          <input type="text" class="form-control input-lg margin-xs" placeholder="check-in">
-          <input type="text" class="form-control input-lg margin-xs" placeholder="check-out">
-          <select class="form-control input-lg margin-xs">
-            <option value="1">1 guest</option>
-            <option value="2">2 guests</option>
-            <option value="3">3 guests</option>
-          </select>
-          <a class="btn btn-primary btn-lg">Search</a>
+    <form action="/results" method="get" class="form-inline" name="search">
+          <input type="text" class="form-control margin-xs" name="city" placeholder="Lisbon">
+          <input type="text" class="form-control margin-xs" name="gender" placeholder="gender">
+          <input type="text" class="form-control margin-xs" name="age" placeholder="age">
+          <input type="submit" value="Search" class="btn btn-primary">
     </form>
   </div>
 </div>
@@ -30,14 +26,13 @@
 <div class="container">
   <div class="row">
   <% @friends.each do |friend| %>
-    <% @user = friend.user %>
+
     <div class="col-xs-12 col-sm-4">
-      <%= render 'shared/card', f: friend, u:@user  %>
+      <%= render 'shared/card', f: friend %>
       <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
       <div> <%= friend.description %> </div>
 
     </div>
-      <!-- insert <div class="card"> -->
   <% end %>
   </div>
 </div>
