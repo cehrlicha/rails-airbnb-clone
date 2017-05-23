@@ -47,3 +47,4 @@ end
 # product = Product.new(name: 'NES')
 # product.remote_photo_url = url
 # product.save
+
