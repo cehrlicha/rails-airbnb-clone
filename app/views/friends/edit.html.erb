@@ -1,6 +1,9 @@
 <h1>Edit <%= @friend.name %></h1>
  <%= simple_form_for [@user, @friend] do |f| %>
+      <%= f.error_notification %>
       <%= f.input :name, error: 'Please enter the name of your cocktail' %>
+      <%= f.input :first_name, error: 'Please enter the first name of your friend' %>
+      <%= f.input :last_name, error: 'Please enter the last name of your friend' %>
       <%= f.input :age, error: 'Please enter the age' %>
       <%= f.input :gender, collection: ['male', 'female'], error: 'Please enter gender' %>
       <%= f.input :city, error: 'Please enter city' %>

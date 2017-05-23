@@ -42,6 +42,7 @@ class FriendsController < ApplicationController
 
   def update
     @friend = Friend.find(params[:id])
+    @user = User.find(params[:user_id])
     new_params = friend_params
     new_params.delete("photo_cache") if new_params["photo_cache"].blank?
     new_params.delete("photo") if new_params["photo"].blank?
@@ -51,7 +52,7 @@ class FriendsController < ApplicationController
     if @friend.save
       redirect_to user_path(@friend.user)
     else
-      render 'new'
+      render 'edit'
     end
   end
 
