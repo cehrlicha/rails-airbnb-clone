@@ -6,6 +6,7 @@ class Friend < ApplicationRecord
   validates :age, presence: true
   validates :gender, presence: true
   validates :city, presence: true
+  validates :photo, presence: true
 
   mount_uploader :photo, PhotoUploader
 
