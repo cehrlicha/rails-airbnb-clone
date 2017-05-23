@@ -5,7 +5,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   version :card do
-    resize_to_fill 500, 250
+    cloudinary_transformation effect: "brightness:30", radius: 5,
+      gravity: :face
   end
 
 

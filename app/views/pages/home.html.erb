@@ -14,26 +14,31 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-
-        <% @friends.each do |friend| %>
-
-        <% end %>
-
-    </div>
+  <% @friends.each do |friend| %>
+      <div class="col-xs-6 col-sm-3">
+        <%= render 'shared/card', f: friend, size: 'vertical-card'  %>
+        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
+        <div> <%= friend.description %> </div>
+      </div>
+  <% end %>
   </div>
 
-<div class="container">
-  <div class="row">
+    <div class="row">
   <% @friends.each do |friend| %>
 
-    <div class="col-xs-12 col-sm-4">
-      <%= render 'shared/card', f: friend %>
-      <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
-      <div> <%= friend.description %> </div>
-
-    </div>
+      <div class="col-xs-6 col-sm-4">
+        <%= render 'shared/card', f: friend, size: 'horizontal-card'  %>
+        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
+        <div> <%= friend.description %> </div>
+      </div>
   <% end %>
+  </div>
+      <!-- insert <div class="card"> -->
+  </div>
+
+
+      <!-- insert <div class="card"> -->
+
   </div>
 </div>
 

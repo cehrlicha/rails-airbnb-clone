@@ -1,10 +1,21 @@
-.card {
-  height: 175px;
+.vertical-card {
+  width: 100%;
+  height: 320px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
   position: relative;
 }
+
+.horizontal-card {
+  width: 100%;
+  height: 200px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+}
+
 .card-user {
   position: absolute;
   right: 10px;
