@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @friends = Friend.all
     @user = User.find(params[:id])
+    @friends = @user.friends
   end
 end
