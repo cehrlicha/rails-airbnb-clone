@@ -8,7 +8,9 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
   <!-- Button (call-to-action) -->
-  <%= link_to t(".top_call_to_action", default: "Rent a friend!"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+  <% unless current_user.nil? %>
+  <%= link_to t(".top_call_to_action", default: "Rent a friend!"), new_user_friend_path(current_user), class: "navbar-wagon-item navbar-wagon-button btn" %>
+  <% end %>
 
 
     <!-- Different navigation if login or not -->
