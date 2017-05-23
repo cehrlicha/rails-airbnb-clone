@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20170523105842) do
   create_table "friend_availabilities", force: :cascade do |t|
     t.datetime "start_daytime"
     t.datetime "end_daytime"
-    t.integer  "friends_id"
+    t.integer  "friend_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["friends_id"], name: "index_friend_availabilities_on_friends_id", using: :btree
+    t.index ["friend_id"], name: "index_friend_availabilities_on_friend_id", using: :btree
   end
 
   create_table "friends", force: :cascade do |t|
@@ -68,6 +68,6 @@ ActiveRecord::Schema.define(version: 20170523105842) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "friend_availabilities", "friends", column: "friends_id"
+  add_foreign_key "friend_availabilities", "friends"
   add_foreign_key "friends", "users"
 end
