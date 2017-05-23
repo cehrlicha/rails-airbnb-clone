@@ -1,14 +1,13 @@
+
 <% if size == "vertical-card" %>
-    <%= link_to [u, f] do %>
+    <%= link_to [f.user, f] do %>
     <div class="<%= size %> card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= f.photo.url(:card)%>');">
     <% end %>
   </div>
 
 <% else %>
-    <%= link_to [u, f] do %>
+    <%= link_to [f.user, f] do %>
     <div class="<%= size %> card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= f.photo.url(:card)%>');">
     <% end %>
     </div>
 <% end %>
-
-
