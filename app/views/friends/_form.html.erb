@@ -4,6 +4,8 @@
       <%= f.input :gender, collection: ['male', 'female'], error: 'Please enter gender' %>
       <%= f.input :city, error: 'Please enter city' %>
       <%= f.input :description, error: 'Please describe your friend' %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
       <%= f.hidden_field :user_id, value: @user.id %>
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
