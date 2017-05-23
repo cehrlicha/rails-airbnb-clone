@@ -14,7 +14,7 @@ class Friend < ApplicationRecord
     if last_name.nil?
       first_name
     else
-      first_name + last_name
+      first_name + " " + last_name
     end
   end
 
