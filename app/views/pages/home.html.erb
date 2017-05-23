@@ -2,15 +2,11 @@
   <div class="banner-content">
     <h1>Make real friends</h1>
     <p>Always open for a new buddy</p>
-    <form action="#" class="form-inline">
-          <input type="text" class="form-control input-lg margin-xs" placeholder="check-in">
-          <input type="text" class="form-control input-lg margin-xs" placeholder="check-out">
-          <select class="form-control input-lg margin-xs">
-            <option value="1">1 guest</option>
-            <option value="2">2 guests</option>
-            <option value="3">3 guests</option>
-          </select>
-          <a class="btn btn-primary btn-lg">Search</a>
+    <form action="/results" method="get" class="form-inline" name="search">
+          <input type="text" class="form-control margin-xs" name="city" placeholder="Lisbon">
+          <input type="text" class="form-control margin-xs" name="gender" placeholder="gender">
+          <input type="text" class="form-control margin-xs" name="age" placeholder="age">
+          <input type="submit" value="Search" class="btn btn-primary">
     </form>
   </div>
 </div>
@@ -18,27 +14,31 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-
-        <% @friends.each do |friend| %>
-
-        <% end %>
-
-    </div>
+  <% @friends.each do |friend| %>
+      <div class="col-xs-6 col-sm-3">
+        <%= render 'shared/card', f: friend, size: 'vertical-card'  %>
+        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
+        <div> <%= friend.description %> </div>
+      </div>
+  <% end %>
   </div>
 
-<div class="container">
-  <div class="row">
+    <div class="row">
   <% @friends.each do |friend| %>
-    <% @user = friend.user %>
-    <div class="col-xs-6 col-sm-3">
-      <%= render 'shared/card', f: friend, u:@user  %>
-      <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
-      <div> <%= friend.description %> </div>
 
-    </div>
-      <!-- insert <div class="card"> -->
+      <div class="col-xs-6 col-sm-4">
+        <%= render 'shared/card', f: friend, size: 'horizontal-card'  %>
+        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
+        <div> <%= friend.description %> </div>
+      </div>
   <% end %>
+  </div>
+      <!-- insert <div class="card"> -->
+  </div>
+
+
+      <!-- insert <div class="card"> -->
+
   </div>
 </div>
 

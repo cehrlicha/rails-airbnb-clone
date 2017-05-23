@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  get '/results' , to: "pages#result"
+
   resources :users, only: [:index, :show] do
     resources :friends
   end
