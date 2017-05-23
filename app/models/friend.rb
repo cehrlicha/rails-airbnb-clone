@@ -7,4 +7,9 @@ class Friend < ApplicationRecord
   validates :city, presence: true
 
   mount_uploader :photo, PhotoUploader
+
+  def name
+    first_name + last_name
+  end
+
 end
