@@ -5,6 +5,7 @@ class FriendsController < ApplicationController
   end
 
   def show
+    @friend = Friend.find(params[:id])
 
   end
 
@@ -28,14 +29,30 @@ class FriendsController < ApplicationController
   end
 
   def destroy
+    @friend = Friend.find(params[:id])
+    @friend.destroy
+
+    redirect_to user_path(@friend.user)
   end
 
   def edit
-
+    @friend = Friend.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def update
+    @friend = Friend.find(params[:id])
+    new_params = friend_params
+    new_params.delete("photo_cache") if new_params["photo_cache"].blank?
+    new_params.delete("photo") if new_params["photo"].blank?
 
+    @friend.update(new_params)
+
+    if @friend.save
+      redirect_to user_path(@friend.user)
+    else
+      render 'new'
+    end
   end
 
   private
