@@ -22,24 +22,4 @@
       </div>
   <% end %>
   </div>
-
-    <div class="row">
-  <% @friends.each do |friend| %>
-
-      <div class="col-xs-6 col-sm-4">
-        <%= render 'shared/card', f: friend, size: 'horizontal-card'  %>
-        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
-        <div> <%= friend.description %> </div>
-      </div>
-  <% end %>
-  </div>
-      <!-- insert <div class="card"> -->
-  </div>
-
-
-      <!-- insert <div class="card"> -->
-
-  </div>
-</div>
-
 </div>

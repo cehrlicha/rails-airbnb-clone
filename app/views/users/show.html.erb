@@ -1,4 +1,4 @@
-<h1><%= @user.email %></h1>
+x<h1><%= @user.email %></h1>
 
 <h1 class="text-center"> My Friends </h1>
 
@@ -11,7 +11,7 @@
 
 
       <%= link_to user_friend_path(@user, friend) do %>
-      <div class="card" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("<%= cl_image_path friend.photo, height: 300, width: 400, crop: :fill %>");'>
+      <div class="vertical-card" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("<%= cl_image_path friend.photo, height: 300, width: 400, crop: :fill %>");'>
 
         <div class="card-description">
           <h2><%= friend.name %></h2>
