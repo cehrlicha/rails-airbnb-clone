@@ -1,7 +1,8 @@
 class Friend < ApplicationRecord
   belongs_to :user
 
-  validates :name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :age, presence: true
   validates :gender, presence: true
   validates :city, presence: true
@@ -9,7 +10,11 @@ class Friend < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def name
-    first_name + last_name
+    if last_name.nil?
+      first_name
+    else
+      first_name + last_name
+    end
   end
 
 end
