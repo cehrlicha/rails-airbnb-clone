@@ -10,6 +10,10 @@ class FriendsController < ApplicationController
 
   end
 
+  def product
+    @friend = Friend.find(params[:id])
+  end
+
   def new
     @friend = Friend.new
 
