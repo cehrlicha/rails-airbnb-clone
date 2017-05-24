@@ -1,16 +1,28 @@
 .ppimage {
-    position: absolute;
-    bottom: -30%;
-    right: 55%;
-    border: solid white 8px;
-    }
-.ppname {
-  position: absolute;
-  bottom: 0;
-  right: 40%;
+  border: solid white 8px;
+  }
 
+.imagebox {
+  position: absolute;
+  bottom: -30%;
+  right: 45%;
+}
+
+.ppname {
+  color: White;
 }
 
 .frienddescritpion {
   margin-top: 200px;
+}
+
+.flex {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#info_bookingbox {
+  margin: 50px;
 }
