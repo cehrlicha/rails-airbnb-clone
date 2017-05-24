@@ -8,6 +8,23 @@
   align-items: center;
   justify-content: center;
 }
+
+.friendpictures {
+  position: relative;
+}
+
+
+.friendbanner {
+  color: white;
+  height: 50vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+}
+
+.pp_image {
+  position: absolute;
+}
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
