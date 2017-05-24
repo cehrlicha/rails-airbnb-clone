@@ -1,4 +1,33 @@
-<%= render 'shared/banner', :u => "https://static.pexels.com/photos/277477/pexels-photo-277477.jpeg" %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://static.pexels.com/photos/277477/pexels-photo-277477.jpeg');">
+  <div class="banner-content">
+    <h1>Make real friends</h1>
+    <p>Always open for a new buddy</p>
+    <form action="/results" method="get" class="form-inline" name="search">
+          <input type="text" class="form-control margin-xs" name="city" placeholder="Lisbon">
+          <input type="text" class="form-control margin-xs" name="gender" placeholder="gender">
+          <input type="text" class="form-control margin-xs" name="age" placeholder="age">
+          <div class="input-group date">
+              <input type="text" class="form-control" value="12-02-2012" id='Datetimepicker'>
+              <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
+              <%= content_for(:after_js) do %>
+              <script type="text/javascript">
+                  $(function () {
+                      $('#Datetimepicker').datetimepicker();
+                  });
+              </script>
+              <% end %>
+          </div>
+
+
+          <input type="submit" value="Search" class="btn btn-primary">
+
+
+    </form>
+  </div>
+</div>
+
 
 
 <div class="container">
