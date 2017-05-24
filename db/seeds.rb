@@ -10,6 +10,9 @@ User.destroy_all
 Friend.destroy_all
 
 cities = ["Lisbon", "Paris", "Vienna", "London", "Barcelona", "Lima", "Quito", "Bangkok"]
+faces = ["http://faceresearch.org/images/examples/masc/fem_male.jpg", "http://www.face-painting-fun.com/images/xhosa-face.jpg",
+"https://s-media-cache-ak0.pinimg.com/736x/f1/85/34/f18534b1b5633d8d70fcec906a950f8a.jpg", "http://media.dead-frog.com/comics/corey_holcomb.jpg?mtime=1446326127",
+'http://files.gamebanana.com/img/ico/sprays/54b226bbd6e42.png']
 
 url = 'henry.jpg'
 
@@ -27,10 +30,10 @@ url = 'henry.jpg'
 
     rand(1..10).times do
     friend = Friend.new(
-      remote_photo_url: 'http://files.gamebanana.com/img/ico/sprays/54b226bbd6e42.png',
+      remote_photo_url: faces.sample,
       # photo: Faker::Avatar.image,
-      last_name: Faker::Name.last_name,
-      first_name: Faker::Name.first_name,
+      last_name: Faker::Ancient.god,
+      first_name: Faker::Superhero.prefix,
       age: rand(18..30),
       gender: ["male", "female"].sample,
       user: user
