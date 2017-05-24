@@ -12,8 +12,9 @@
   color: White;
 }
 
-.frienddescritpion {
-  margin-top: 200px;
+#productinfos {
+  margin-top: 270px;
+  margin-bottom: 70px;
 }
 
 .flex {
@@ -25,4 +26,10 @@
 
 #info_bookingbox {
   margin: 50px;
+}
+
+#info-wrapper {
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
