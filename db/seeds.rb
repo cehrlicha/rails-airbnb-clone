@@ -14,9 +14,14 @@ faces = ["http://faceresearch.org/images/examples/masc/fem_male.jpg", "http://ww
 "https://s-media-cache-ak0.pinimg.com/736x/f1/85/34/f18534b1b5633d8d70fcec906a950f8a.jpg", "http://media.dead-frog.com/comics/corey_holcomb.jpg?mtime=1446326127",
 'http://files.gamebanana.com/img/ico/sprays/54b226bbd6e42.png']
 
-url = 'henry.jpg'
+      start = rand(1..30)
+      final = 1
+      until final > start
+        final = rand(1..30)
+      end
 
-10.times do
+
+4.times do
   user = User.create(
     password: "123456789",
     email: Faker::Internet.email,
@@ -28,7 +33,7 @@ url = 'henry.jpg'
   )
 
 
-    rand(1..10).times do
+    rand(1..3).times do
     friend = Friend.new(
       remote_photo_url: faces.sample,
       # photo: Faker::Avatar.image,
@@ -36,12 +41,38 @@ url = 'henry.jpg'
       first_name: Faker::Superhero.prefix,
       age: rand(18..30),
       gender: ["male", "female"].sample,
-      user: user
+      description: Faker::Lorem.paragraph,
+      user: user,
+      price: rand(5..20)
     )
     friend.city = cities.sample
     friend.save
+
+    rand(1..2).times do
+      available = FriendAvailability.create(
+        start_daytime: DateTime.new(2017,5,rand(1..10)),
+        end_daytime: DateTime.new(2017,5,rand(10..20)),
+        friend: friend
+        )
+    end
   end
 
+end
+
+
+5.times do
+  product = Friend.all.sample
+  buyer = User.all.sample
+  while buyer == Friend.all.sample.user
+    buyer = User.all.sample
+  end
+  sale = Sale.create(
+    start_daytime: DateTime.new(2017,4,rand(1..10)),
+    end_daytime: DateTime.new(2017,4,rand(10..20)),
+    location: Faker::Address.country,
+    friend: product,
+    buyer: buyer
+    )
 end
 
 

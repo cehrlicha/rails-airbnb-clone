@@ -6,6 +6,9 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   has_many :friends, dependent: :destroy
+  has_many :buyer_sales, dependent: :destroy, class_name: "Sale", foreign_key: "buyer_id"
+  has_many :seller_sales, dependent: :destroy, through: :friends, source: :sales
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
