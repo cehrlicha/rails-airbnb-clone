@@ -1,13 +1,34 @@
+<div class="wrapper">
+
+<div class="container">
+  <div class="row">
+
+    <form action="/results" method="get" class="form-inline" name="search">
+          <input type="text" class="form-control margin-xs" name="city" value="<%=params[:city]%>" placeholder="Lisbon">
+
+          <input type="text" class="form-control margin-xs" name="gender" value="<%=params[:gender]%>" placeholder="male">
+
+          <input type="text" class="form-control margin-xs" name="age" value="<%=params[:age]%>" placeholder="23">
+
+          <input type="submit" value="Search" class="btn btn-primary">
+    </form>
+
+  </div>
+</div>
+
+
 <div class="container">
   <div class="row">
   <% @friends.each do |friend| %>
 
     <div class="col-xs-12 col-sm-4">
       <%= render 'shared/card', f: friend, size: 'vertical-card'  %>
-      <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
+      <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> - <%= friend.price %>€/hour </div>
       <div> <%= friend.description %> </div>
 
     </div>
   <% end %>
   </div>
+</div>
+
 </div>

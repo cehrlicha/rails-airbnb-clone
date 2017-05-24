@@ -21,6 +21,7 @@ class Friend < ApplicationRecord
 
   def self.search(search)
       where("city LIKE ? AND gender = ? AND age = ?", "%"+search["city"]+"%", search["gender"], search["age"].to_i)
+
   end
 
 end
