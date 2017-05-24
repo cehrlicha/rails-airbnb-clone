@@ -1,12 +1,12 @@
 <% if size == "vertical-card" %>
-    <%= link_to friend_path(f) do %>
+  <%= link_to friend_path(f) do %>
     <div class="vertical-card card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= f.photo.url(:card)%>');">
-  </div>
-    <% end %>
+    </div>
+  <% end %>
 
 <% else %>
-    <%= link_to friend_path(f) do %>
+  <%= link_to friend_path(f) do %>
     <div class="horizontal-card card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= f.photo.url(:card)%>');">
     </div>
-    <% end %>
+  <% end %>
 <% end %>

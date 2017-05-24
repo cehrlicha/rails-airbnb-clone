@@ -6,7 +6,22 @@
           <input type="text" class="form-control margin-xs" name="city" placeholder="Lisbon">
           <input type="text" class="form-control margin-xs" name="gender" placeholder="gender">
           <input type="text" class="form-control margin-xs" name="age" placeholder="age">
+          <div class="input-group date">
+              <input type="text" class="form-control" value="12-02-2012" id='datetimepicker'>
+              <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
+              <%= content_for(:after_js) do %>
+              <script type="text/javascript">
+                  $(function () {
+                      $('#datetimepicker').datetimepicker();
+                  });
+              </script>
+              <% end %>
+          </div>
           <input type="submit" value="Search" class="btn btn-primary">
+
+
     </form>
   </div>
 </div>
@@ -15,8 +30,8 @@
 <div class="container">
   <div class="row">
   <% @friends.each do |friend| %>
-      <div class="col-xs-6 col-sm-4">
-        <%= render 'shared/card', f: friend, size: 'vertical-card' %>
+      <div class="col-xs-6 col-sm-3">
+        <%= render 'shared/card', f: friend, size: 'vertical-card'  %>
         <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
         <div> <%= friend.description %> </div>
       </div>
