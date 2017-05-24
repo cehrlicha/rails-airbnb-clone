@@ -14,14 +14,14 @@ faces = ["http://faceresearch.org/images/examples/masc/fem_male.jpg", "http://ww
 "https://s-media-cache-ak0.pinimg.com/736x/f1/85/34/f18534b1b5633d8d70fcec906a950f8a.jpg", "http://media.dead-frog.com/comics/corey_holcomb.jpg?mtime=1446326127",
 'http://files.gamebanana.com/img/ico/sprays/54b226bbd6e42.png']
 
-start = rand(1..30)
-final = 1
-until final > start
-  final = rand(1..30)
-end
+      start = rand(1..30)
+      final = 1
+      until final > start
+        final = rand(1..30)
+      end
 
 
-10.times do
+4.times do
   user = User.create(
     password: "123456789",
     email: Faker::Internet.email,
@@ -33,7 +33,7 @@ end
   )
 
 
-    rand(1..5).times do
+    rand(1..3).times do
     friend = Friend.new(
       remote_photo_url: faces.sample,
       # photo: Faker::Avatar.image,
@@ -41,16 +41,17 @@ end
       first_name: Faker::Superhero.prefix,
       age: rand(18..30),
       gender: ["male", "female"].sample,
+      description: Faker::Lorem.paragraph,
       user: user,
       price: rand(5..20)
     )
     friend.city = cities.sample
     friend.save
 
-    rand(1..3).times do
+    rand(1..2).times do
       available = FriendAvailability.create(
-        start_daytime: DateTime.new(2017,5,start),
-        end_daytime: DateTime.new(2017,5,final),
+        start_daytime: DateTime.new(2017,5,rand(1..10)),
+        end_daytime: DateTime.new(2017,5,rand(10..20)),
         friend: friend
         )
     end
@@ -58,16 +59,16 @@ end
 
 end
 
-product = Friend.all.sample
-buyer = User.all.sample
-while buyer == Friend.all.sample.user
-  buyer = User.all.sample
-end
 
-15.times do
+5.times do
+  product = Friend.all.sample
+  buyer = User.all.sample
+  while buyer == Friend.all.sample.user
+    buyer = User.all.sample
+  end
   sale = Sale.create(
-    start_daytime: DateTime.new(2017,4,start),
-    end_daytime: DateTime.new(2017,4,final),
+    start_daytime: DateTime.new(2017,4,rand(1..10)),
+    end_daytime: DateTime.new(2017,4,rand(10..20)),
     location: Faker::Address.country,
     friend: product,
     buyer: buyer

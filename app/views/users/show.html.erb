@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
 
-  <% @friends.each do |friend| %>
+    <% @friends.each do |friend| %>
     <div class="col-xs-12 col-sm-4">
       <!-- insert <div class="card"> -->
 
@@ -15,17 +15,86 @@
 
         <div class="card-description">
           <h2><%= friend.name %></h2>
+          <p><%= friend.price %>€/hour</p>
         </div>
       </div>
 
       <% end %>
 
     </div>
-      <% end %>
+    <% end %>
   </div>
 
-<div class="text-center">
+  <div class="text-center">
     <%= link_to "Add a new friend", new_user_friend_path(@user), class:"btn btn-primary" %>
-    </div>
+  </div>
 
+</div>
+
+<div class="container">
+  <div class="row">
+  <h1>Sales</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Friend</th>
+          <th>Buyer</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.seller_sales.each do |sale| %>
+        <tr>
+          <td><%= sale.id %></td>
+          <td><%= sale.friend.name %></td>
+          <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
+          <td><%= sale.location %></td>
+          <td><%= sale.friend.price %> €/hour</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+  <h1>Buy</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Friend</th>
+          <th>Owner</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.buyer_sales.each do |sale| %>
+        <tr>
+          <td><%= sale.id %></td>
+          <td><%= sale.friend.name %></td>
+          <td><%= sale.friend.user.first_name %> <%= sale.friend.user.last_name %></td>
+          <td><%= sale.location %></td>
+          <td><%= sale.friend.price %> €/hour</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+  </div>
 </div>

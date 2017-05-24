@@ -1,6 +1,6 @@
 class Friend < ApplicationRecord
   belongs_to :user
-  has_many :sales
+  has_many :sales, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
