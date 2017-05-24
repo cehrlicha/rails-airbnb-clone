@@ -9,6 +9,8 @@
 User.destroy_all
 Friend.destroy_all
 
+cities = ["Lisbon", "Paris", "Vienna", "London", "Barcelona", "Lima", "Quito", "Bangkok"]
+
 url = 'henry.jpg'
 
 10.times do
@@ -23,17 +25,18 @@ url = 'henry.jpg'
   )
 
 
-    rand(1..5).times do
-    friend = Friend.create(
+    rand(1..10).times do
+    friend = Friend.new(
       remote_photo_url: 'http://files.gamebanana.com/img/ico/sprays/54b226bbd6e42.png',
       # photo: Faker::Avatar.image,
       last_name: Faker::Name.last_name,
       first_name: Faker::Name.first_name,
-      city: Faker::Address.city,
-      age: rand(18..90),
+      age: rand(18..30),
       gender: ["male", "female"].sample,
       user: user
     )
+    friend.city = cities.sample
+    friend.save
   end
 
 end

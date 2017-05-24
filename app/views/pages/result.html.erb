@@ -2,9 +2,8 @@
   <div class="row">
   <% @friends.each do |friend| %>
 
-    <% @user = friend.user %>
     <div class="col-xs-12 col-sm-4">
-      <%= render 'shared/card', f: friend, u:@user  %>
+      <%= render 'shared/card', f: friend, size: 'vertical-card'  %>
       <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
       <div> <%= friend.description %> </div>
 
