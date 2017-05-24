@@ -17,7 +17,7 @@
   <% @friends.each do |friend| %>
       <div class="col-xs-6 col-sm-4">
         <%= render 'shared/card', f: friend, size: 'vertical-card' %>
-        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> </div>
+        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> - <%= friend.price %>€/hour</div>
         <div> <%= friend.description %> </div>
       </div>
   <% end %>
