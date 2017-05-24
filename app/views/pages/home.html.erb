@@ -7,18 +7,20 @@
           <input type="text" class="form-control margin-xs" name="gender" placeholder="gender">
           <input type="text" class="form-control margin-xs" name="age" placeholder="age">
           <div class="input-group date">
-              <input type="text" class="form-control" value="12-02-2012" id='datetimepicker'>
+              <input type="text" class="form-control" value="12-02-2012" id='Datetimepicker'>
               <div class="input-group-addon">
                   <span class="glyphicon glyphicon-th"></span>
               </div>
               <%= content_for(:after_js) do %>
               <script type="text/javascript">
                   $(function () {
-                      $('#datetimepicker').datetimepicker();
+                      $('#Datetimepicker').datetimepicker();
                   });
               </script>
               <% end %>
           </div>
+
+
           <input type="submit" value="Search" class="btn btn-primary">
 
 
