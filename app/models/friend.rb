@@ -1,6 +1,7 @@
 class Friend < ApplicationRecord
   belongs_to :user
   has_many :sales, dependent: :destroy
+  has_many :friend_availabilities, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -20,6 +21,7 @@ class Friend < ApplicationRecord
   end
 
   def self.search(search)
+      date = DateTime.parse(search["date"])
       where("city LIKE ? AND gender = ? AND age = ?", "%"+search["city"]+"%", search["gender"], search["age"].to_i)
 
   end

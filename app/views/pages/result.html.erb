@@ -10,6 +10,20 @@
 
           <input type="text" class="form-control margin-xs" name="age" value="<%=params[:age]%>" placeholder="23">
 
+          <div class="input-group date">
+              <input type="text" class="form-control" value="<%=params[:date]%>" name="date" id='Datetimepicker'>
+              <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
+              <%= content_for(:after_js) do %>
+              <script type="text/javascript">
+                  $(function () {
+                      $('#Datetimepicker').datetimepicker();
+                  });
+              </script>
+              <% end %>
+          </div>
+
           <input type="submit" value="Search" class="btn btn-primary">
     </form>
 
@@ -24,7 +38,13 @@
     <div class="col-xs-12 col-sm-4">
       <%= render 'shared/card', f: friend, size: 'vertical-card'  %>
       <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> - <%= friend.price %>€/hour </div>
+      <br>
       <div> <%= friend.description %> </div>
+      <br>
+      <div><% friend.friend_availabilities.each do |av| %>
+            <p>Available from <%= Date::DAYNAMES[av.start_daytime.wday] %> <%= av.start_daytime.to_date  %> to <%= Date::DAYNAMES[av.end_daytime.wday] %> <%= av.end_daytime.to_date %></p>
+            <% end %>
+      </div>
 
     </div>
   <% end %>

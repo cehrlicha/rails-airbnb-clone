@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def result
     if !params.nil? && !params.empty?
+
       @friends = Friend.search(params)
     end
   end
