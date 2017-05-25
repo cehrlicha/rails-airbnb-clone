@@ -54,7 +54,7 @@
           <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
           <td><%= sale.location %></td>
           <td><%= sale.friend.price %> €/hour</td>
-          <td> <p class="navbar-wagon-item navbar-wagon-link" style="margin:0" data-toggle="modal" data-target="#RatingModal"> Rate </p> <%= render 'shared/ratingmodal', {:s => sale, :r => @rating} %> </td>
+
 
 
         </tr>
@@ -88,10 +88,12 @@
         <% @user.buyer_sales.each do |sale| %>
         <tr>
           <td><%= sale.id %></td>
-          <td><%= sale.friend.name %></td>
+          <td> <%= sale.friend.name %></td>
           <td><%= sale.friend.user.first_name %> <%= sale.friend.user.last_name %></td>
           <td><%= sale.location %></td>
           <td><%= sale.friend.price %> €/hour</td>
+          <td> <% if sale.rating.nil?  %> <p class="navbar-wagon-item navbar-wagon-link" style="margin:0" data-toggle="modal" data-target="#RatingModal"> Rate </p> <%= render 'shared/ratingmodal', {:s => sale, :r => @rating} %> <% end %> </td>
+
         </tr>
         <% end %>
       </tbody>
