@@ -12,6 +12,7 @@ class FriendsController < ApplicationController
 
   def product
     @friend = Friend.find(params[:id])
+    @date = params[:date]
   end
 
   def new

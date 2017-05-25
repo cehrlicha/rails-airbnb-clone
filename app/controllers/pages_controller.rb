@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def result
-
+    byebug
     if !params.nil? && !params.empty?
 
       @friends = Friend.search(params)

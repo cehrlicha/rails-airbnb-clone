@@ -1,7 +1,6 @@
 class SalesController < ApplicationController
 
   def new
-    # byebug
     @friend = Friend.find(params[:friend_id])
     @date = params[:date]
   end
