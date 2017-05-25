@@ -42,10 +42,35 @@
       <%= link_to "Back to list", root_path, class: "btn btn-primary" %>
     </div>
     <div class=" text-center description">
-      <h3>Your chosen date is <%= Date::DAYNAMES[DateTime.parse(@date).wday]%> <%= DateTime.parse(@date).to_date%></h3>
+
       <%= link_to "Book a friend!", {controller: 'sales',
              action: 'new',
              friend_id: @friend.id,
              date: params["date"]}, class: "btn btn-success" %>
     </div>
   </div>
+
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Buyer</th>
+          <th>Rating</th>
+          <th>Review</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @friend.sales.each do |sale| %>
+        <tr>
+          <td><%= sale.id %></td>
+          <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
+          <td><%= sale.rating.buyer_rating %></td>
+          <td><%= sale.rating.buyer_review %></td>
+
+
+        </tr>
+        <% end %>
+      </tbody>
+    </table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524102540) do
+ActiveRecord::Schema.define(version: 20170525105039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20170524102540) do
     t.string   "photo"
     t.string   "last_name"
     t.index ["user_id"], name: "index_friends_on_user_id", using: :btree
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "buyer_rating"
+    t.integer  "seller_rating"
+    t.text     "buyer_review"
+    t.text     "seller_review"
+    t.integer  "sale_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["sale_id"], name: "index_ratings_on_sale_id", using: :btree
   end
 
   create_table "sales", force: :cascade do |t|
@@ -81,5 +92,6 @@ ActiveRecord::Schema.define(version: 20170524102540) do
 
   add_foreign_key "friend_availabilities", "friends"
   add_foreign_key "friends", "users"
+  add_foreign_key "ratings", "sales"
   add_foreign_key "sales", "friends"
 end

@@ -1,0 +1,18 @@
+<div class="modal fade" id="RatingModal" tabindex="-1" role="dialog" aria-labelledby="RatingModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title text-center" id="RatingModalLabel"> Add a rating </h4>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for r, {:url => sale_ratings_path(s), :method => :post} do |f| %>
+                    <%= f.input :buyer_rating, error: 'Please enter a number between 0 and 5' %>
+                    <%= f.input :buyer_review, error: 'Please enter a comment' %>
+                    <%= f.hidden_field :sale_id, value: s.id %>
+                    <%= f.submit "Submit", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
