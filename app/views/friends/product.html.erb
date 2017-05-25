@@ -42,6 +42,7 @@
       <%= link_to "Back to list", root_path, class: "btn btn-primary" %>
     </div>
     <div class=" text-center description">
+      <h3>Your chosen date is <%= Date::DAYNAMES[DateTime.parse(params["d"]).wday]%> <%= DateTime.parse(params["d"]).to_date%></h3>
       <%= link_to "Book a friend!", root_path, class: "btn btn-primary" %>
     </div>
   </div>
