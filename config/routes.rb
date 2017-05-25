@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :friends
   end
 
+  resources :sales, only: [:index, :show, :create] do
+    resources :ratings
+  end
   #resources :friends ,except: [:show]
   get '/friends/:id' , to: "friends#product", as: 'friend'
 
