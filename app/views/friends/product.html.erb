@@ -42,6 +42,10 @@
       <%= link_to "Back to list", root_path, class: "btn btn-primary" %>
     </div>
     <div class=" text-center description">
-      <%= link_to "Book a friend!", root_path, class: "btn btn-primary" %>
+      <h3>Your chosen date is <%= Date::DAYNAMES[DateTime.parse(@date).wday]%> <%= DateTime.parse(@date).to_date%></h3>
+      <%= link_to "Book a friend!", {controller: 'sales',
+             action: 'new',
+             friend_id: @friend.id,
+             date: params["date"]}, class: "btn btn-success" %>
     </div>
   </div>
