@@ -9,4 +9,9 @@ class Sale < ApplicationRecord
   validates :buyer, presence: true
   validates :friend, presence: true
 
+  validates :start_daytime, presence: true
+  validates :end_daytime, presence: true
+  validates :buyer, presence: true
+  validates :friend, presence: true
+
 end
