@@ -1,5 +1,5 @@
 <% if size == "vertical-card" %>
-  <%= link_to friend_path(f, :d => params["date"]) do %>
+  <%= link_to friend_path(f, :date => params["date"]) do %>
     <div class="vertical-card card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= f.photo.url(:card)%>');">
     </div>
   <% end %>
