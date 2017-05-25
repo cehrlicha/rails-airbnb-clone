@@ -12,13 +12,13 @@ class FriendsController < ApplicationController
   end
 
   def product
+    # byebug
     @friend = Friend.find(params[:id])
     @date = params[:date]
   end
 
   def new
     @friend = Friend.new
-
     @user = User.find(params[:user_id])
 
   end
