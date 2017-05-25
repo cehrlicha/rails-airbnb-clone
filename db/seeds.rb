@@ -52,7 +52,7 @@ friend1 = Friend.create(
   user: user1,
   price: rand(5..20),
   city: "Lisbon",
-  address: ""
+  address: "Av. da Liberdade 127, 1269-038 Lisboa"
 )
 
 friend2 = Friend.create(
@@ -65,7 +65,7 @@ friend2 = Friend.create(
   user: user1,
   price: 3,
   city: "Lisbon",
-  address: ""
+  address: "Av. Almirante Reis nº1 - H, 1150-007 Lisboa"
 )
 
 friend3 = Friend.create(
@@ -78,7 +78,7 @@ friend3 = Friend.create(
   user: user2,
   price: 20,
   city: "Lisbon",
-  address: ""
+  address: "R. do Teixeira 35, 1200-459 Lisboa"
 )
 
 friend4 = Friend.create(
@@ -91,7 +91,7 @@ friend4 = Friend.create(
   user: user3,
   price: 12,
   city: "Lisbon",
-  address: ""
+  address: "Largo de São Carlos 10, 1200-410 Lisboa"
 )
 
 friend5 = Friend.create(
@@ -104,7 +104,7 @@ friend5 = Friend.create(
   user: user3,
   price: 15,
   city: "Lisbon",
-  address: ""
+  address: "R. Portas de Santo Antão 150, 1150-048 Lisboa"
 )
 
 puts "Database updated with 3 users and 5 friends"
