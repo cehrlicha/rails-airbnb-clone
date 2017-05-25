@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+
+    <h3 class = "text-center"> Please confirm the following booking </h3>
+
+
+    <div class="friendpictures">
+      <div class="friendbanner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(u);">
+        <div class="imagebox">
+          <div class="flex">
+
+            <div class="ppimage">
+              <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :fill %>
+            </div>
+
+            <div class="ppname">
+              <h2> <%= @friend.name %> </h2>
+              <p> <%= @friend.price %> €/hour</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dateconfirmation text-right">
+      <h5>Your chosen date is <strong> <%= Date::DAYNAMES[DateTime.parse(@date).wday]%> <%= DateTime.parse(@date).to_date%> </strong></h5>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row">
+    <div class="confirm">
+      <%= link_to "Confirm", {
+            controller: 'sales',
+            action: 'create',
+            friend_id: @friend.id,
+            date: params["d"]
+            },
+            class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>
