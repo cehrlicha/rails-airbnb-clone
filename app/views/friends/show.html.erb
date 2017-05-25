@@ -1,45 +1,30 @@
-<div class="wrapper">
-  <div class="friendpictures">
-    <div class="friendbanner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(u);">
-      <div class="banner-content">
-    </div>
-    <div class="imagebox">
-      <div class="flex">
-        <div class="ppimage">
-          <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :fill %>
-        </div>
-        <div class="ppname">
-          <h2> <%= @friend.name %> </h2>
-        </div>
-      </div>
-    </div>
-
-    </div>
-  </div>
-
-  <div class="container text-center">
-  <div class="row" id="info_bookingbox">
-    <div class="col-xs-6">
-      <div class="frienddescritpion">
-          <p> <%= @friend.description %> </p>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="frienddescritpion">
-          <p> <%= @friend.description %> </p>
-      </div>
-    </div>
-
-  </div>
-  </div>
-  <div class=" text-center description">
-    <%= link_to "Back to list", root_path, class: "btn btn-primary" %>
-    <%= link_to "Edit", root_path, class: "btn btn-primary" %>
-    <%= link_to "Delete", root_path, class: "btn btn-primary",
-    method: :delete %>
-  </div>
+<div class="profile-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(u);">
 
 </div>
+  <div class="profile-details">
+
+    <div class="profile-pic col-xs-6">
+      <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :fill %>
+    </div>
+
+      <div class="col-xs-6">
+
+        <div class="action_button_profile">
+          <%= link_to "Back to list", user_path(@user), class: "btn btn-primary" %>
+          <%= link_to "Edit", edit_user_friend_path(@user, @friend), class: "btn btn-primary" %>
+          <%= link_to "Delete", user_friend_path(@user, @friend), class: "btn btn-primary",
+          method: :delete %>
+        </div>
+
+        <div class="profile-desc">
+          <h2> <%= @friend.first_name + " " + @friend.last_name  %> </h2>
+          <h3> <%= @friend.description %> </h3>
+          <h3> <%= @friend.age %> years old </h3>
+        </div>
+
+      </div>
+
+  </div>
 
 
 

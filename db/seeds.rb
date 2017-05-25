@@ -9,71 +9,182 @@
 User.destroy_all
 Friend.destroy_all
 
-cities = ["Lisbon", "Paris", "Vienna", "London", "Barcelona", "Lima", "Quito", "Bangkok"]
-faces = ["http://faceresearch.org/images/examples/masc/fem_male.jpg", "http://www.face-painting-fun.com/images/xhosa-face.jpg",
-"https://s-media-cache-ak0.pinimg.com/736x/f1/85/34/f18534b1b5633d8d70fcec906a950f8a.jpg", "http://media.dead-frog.com/comics/corey_holcomb.jpg?mtime=1446326127",
-'http://files.gamebanana.com/img/ico/sprays/54b226bbd6e42.png']
 
-      start = rand(1..30)
-      final = 1
-      until final > start
-        final = rand(1..30)
-      end
+puts "Creating Users"
+user1 = User.create(
+  password: "123456",
+  email: "annakin@gmail.com",
+  last_name: "Skywalker",
+  first_name: "Annakin",
+  username: "askywalker",
+  phone_number: "0475447014",
+  image: Faker::Avatar.image
+)
+
+user2 = User.create(
+  password: "123456",
+  email: "luke@gmail.com",
+  last_name: "Skywalker",
+  first_name: "Luke",
+  username: "lskywalker",
+  phone_number: "0477372777",
+  image: Faker::Avatar.image
+)
+
+user3 = User.create(
+  password: "123456",
+  email: "dark@gmail.com",
+  last_name: "Vador",
+  first_name: "Dark",
+  username: "dvador",
+  phone_number: "0485102063",
+  image: Faker::Avatar.image
+)
+
+puts "Creating Friends"
+friend1 = Friend.create(
+  remote_photo_url: "http://res.cloudinary.com/cehrlicha/image/upload/v1495706341/benoit_pw94em.png",
+  last_name: "Habfast",
+  first_name: "Benoit",
+  age: 23,
+  gender: "male",
+  description: "Nice french guy. His goal in life: develop a friend bot application and love shoes",
+  user: user1,
+  price: rand(5..20),
+  city: "Lisbon",
+  address: ""
+)
+
+friend2 = Friend.create(
+  remote_photo_url: "http://res.cloudinary.com/cehrlicha/image/upload/v1495706342/gauthier_kaiwuz.jpg",
+  last_name: "Lagae",
+  first_name: "Gauthier",
+  age: 26,
+  gender: "male",
+  description: "Belgian common guy, give him a beer and he will rate you well! Cheap!",
+  user: user1,
+  price: 3,
+  city: "Lisbon",
+  address: ""
+)
+
+friend3 = Friend.create(
+  remote_photo_url: "http://res.cloudinary.com/cehrlicha/image/upload/v1495706341/marianna_dpfhiu.jpg",
+  last_name: "de la Muerte",
+  first_name: "Marianna",
+  age: 30,
+  gender: "female",
+  description: "For god sake, accept her dinner invitation! Ok, she's expensive..",
+  user: user2,
+  price: 20,
+  city: "Lisbon",
+  address: ""
+)
+
+friend4 = Friend.create(
+  remote_photo_url: "http://res.cloudinary.com/cehrlicha/image/upload/v1495706341/daniel_cvbzyf.jpg",
+  last_name: "Silvesteriano",
+  first_name: "Daniel",
+  age: 27,
+  gender: "male",
+  description: "Good quality price! Just avoid dinner, might take several hours..",
+  user: user3,
+  price: 12,
+  city: "Lisbon",
+  address: ""
+)
+
+friend5 = Friend.create(
+  remote_photo_url: "http://res.cloudinary.com/cehrlicha/image/upload/v1495706342/viola_tqrjv9.png",
+  last_name: "Stockli",
+  first_name: "Viola",
+  age: 26,
+  gender: "female",
+  description: "Watch out for your money!",
+  user: user3,
+  price: 15,
+  city: "Lisbon",
+  address: ""
+)
+
+puts "Database updated with 3 users and 5 friends"
 
 
-4.times do
-  user = User.create(
-    password: "123456789",
-    email: Faker::Internet.email,
-    last_name: Faker::Name.last_name,
-    first_name: Faker::Name.first_name,
-    username: Faker::Internet.user_name,
-    phone_number: Faker::PhoneNumber.phone_number,
-    image: Faker::Avatar.image
+
+puts "Create availibity"
+available1 = FriendAvailability.create(
+  start_daytime: DateTime.new(2017,5,rand(1..10)),
+  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  friend: friend1
+  )
+
+available2 = FriendAvailability.create(
+  start_daytime: DateTime.new(2017,5,rand(1..10)),
+  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  friend: friend2
+  )
+
+available3 = FriendAvailability.create(
+  start_daytime: DateTime.new(2017,5,rand(1..10)),
+  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  friend: friend3
+  )
+
+available4 = FriendAvailability.create(
+  start_daytime: DateTime.new(2017,5,rand(1..10)),
+  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  friend: friend4
+  )
+
+available5 = FriendAvailability.create(
+  start_daytime: DateTime.new(2017,5,rand(1..10)),
+  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  friend: friend5
+  )
+
+puts "Create Sales"
+sale1 = Sale.create(
+  start_daytime: DateTime.new(2017,4,rand(1..10)),
+  end_daytime: DateTime.new(2017,4,rand(10..20)),
+  location: "Portugal",
+  friend: friend1,
+  buyer: user2,
+  )
+
+sale2 = Sale.create(
+  start_daytime: DateTime.new(2017,4,rand(1..10)),
+  end_daytime: DateTime.new(2017,4,rand(10..20)),
+  location: "Portugal",
+  friend: friend5,
+  buyer: user2,
+  )
+
+sale3 = Sale.create(
+  start_daytime: DateTime.new(2017,4,rand(1..10)),
+  end_daytime: DateTime.new(2017,4,rand(10..20)),
+  location: "Portugal",
+  friend: friend3,
+  buyer: user1,
+  )
+
+sale4 = Sale.create(
+  start_daytime: DateTime.new(2017,4,rand(1..10)),
+  end_daytime: DateTime.new(2017,4,rand(10..20)),
+  location: "Portugal",
+  friend: friend4,
+  buyer: user1,
+  )
+
+sale5 = Sale.create(
+  start_daytime: DateTime.new(2017,4,rand(1..10)),
+  end_daytime: DateTime.new(2017,4,rand(10..20)),
+  location: "Portugal",
+  friend: friend2,
+  buyer: user3,
   )
 
 
-    rand(1..3).times do
-    friend = Friend.new(
-      remote_photo_url: faces.sample,
-      # photo: Faker::Avatar.image,
-      last_name: Faker::Ancient.god,
-      first_name: Faker::Superhero.prefix,
-      age: rand(18..30),
-      gender: ["male", "female"].sample,
-      description: Faker::Lorem.paragraph,
-      user: user,
-      price: rand(5..20)
-    )
-    friend.city = cities.sample
-    friend.save
-
-    rand(1..2).times do
-      available = FriendAvailability.create(
-        start_daytime: DateTime.new(2017,5,rand(1..10)),
-        end_daytime: DateTime.new(2017,5,rand(10..20)),
-        friend: friend
-        )
-    end
-  end
-
-end
-
-
-5.times do
-  product = Friend.all.sample
-  buyer = User.all.sample
-  while buyer == Friend.all.sample.user
-    buyer = User.all.sample
-  end
-  sale = Sale.create(
-    start_daytime: DateTime.new(2017,4,rand(1..10)),
-    end_daytime: DateTime.new(2017,4,rand(10..20)),
-    location: Faker::Address.country,
-    friend: product,
-    buyer: buyer
-    )
-end
+puts "Seed success! Well done Motha faackerrr!"
 
 
 
