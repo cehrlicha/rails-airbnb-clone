@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :friends
   end
 
-  resources :sales, only: [:index, :show, :create] do
+  resources :sales, only: [:index, :show] do
     resources :ratings
   end
   #resources :friends ,except: [:show]

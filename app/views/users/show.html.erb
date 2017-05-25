@@ -54,6 +54,9 @@
           <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
           <td><%= sale.location %></td>
           <td><%= sale.friend.price %> €/hour</td>
+          <td> <p class="navbar-wagon-item navbar-wagon-link" style="margin:0" data-toggle="modal" data-target="#RatingModal"> Rate </p> <%= render 'shared/ratingmodal', {:s => sale, :r => @rating} %> </td>
+
+
         </tr>
         <% end %>
       </tbody>
@@ -98,3 +101,5 @@
 
   </div>
 </div>
+
+
