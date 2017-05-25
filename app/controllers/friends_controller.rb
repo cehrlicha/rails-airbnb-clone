@@ -9,6 +9,13 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
     @user = User.find(params[:user_id])
 
+    # @friend_geo = Friend.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@friend) do |friend, marker|
+      marker.lat friend.latitude
+      marker.lng friend.longitude
+    end
+
   end
 
   def product
