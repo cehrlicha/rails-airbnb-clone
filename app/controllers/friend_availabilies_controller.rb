@@ -1,0 +1,3 @@
+class FriendAvailabiliesController < ApplicationController
+
+end

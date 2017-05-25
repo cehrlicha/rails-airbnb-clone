@@ -67,6 +67,45 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+  <h1>Pending requests</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Friend</th>
+          <th>Availability</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.friends.all.each do |friend| %>
+        <tr>
+          <% unless friend.friend_availabilities.nil?
+            friend.friend_availabilities.each do |av|%>
+            <% if av == 1 %>
+              <td><%= friend.id %></td>
+              <td><%= av.friend.name %></td>
+              <td><%= av.pending %></td>
+              <td> confirm button</td>
+           <% end %>
+           <% end %>
+          <% end %>
+
+
+
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+  </div>
+</div>
+
 
 
 <div class="container">

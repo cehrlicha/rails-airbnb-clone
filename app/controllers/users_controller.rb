@@ -3,6 +3,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @friends = @user.friends
     @rating = Rating.new
+
+    @date = params[:date]
+    @booked_friend = Friend.find(params[:friend_id])
+
+    FriendAvailability.pending(@date, @booked_friend)
+    byebug
   end
 
   def name
