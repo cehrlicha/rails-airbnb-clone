@@ -9,12 +9,14 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
     @user = User.find(params[:user_id])
 
+
   end
 
   def product
     # byebug
     @friend = Friend.find(params[:id])
     @date = params[:date]
+     @sale = Sale.new
   end
 
   def new
