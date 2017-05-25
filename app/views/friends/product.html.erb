@@ -50,10 +50,10 @@
     </div>
   </div>
 
+
   <table class="table table-striped">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Buyer</th>
           <th>Rating</th>
           <th>Review</th>
@@ -63,14 +63,20 @@
 
       <tbody>
         <% @friend.sales.each do |sale| %>
+          <% if !sale.rating.nil? %>
         <tr>
-          <td><%= sale.id %></td>
-          <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
-          <td><%= sale.rating.buyer_rating %></td>
-          <td><%= sale.rating.buyer_review %></td>
-
-
+                <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
+                <td><%= sale.rating.buyer_rating %></td>
+                <td><%= sale.rating.buyer_review %></td>
         </tr>
+        <% else %>
+        <tr>
+          <td>No Ratings for this product</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table>
+
