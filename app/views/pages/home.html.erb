@@ -1,7 +1,7 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://static.pexels.com/photos/277477/pexels-photo-277477.jpeg');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(250,250,250,0.1) 70%), url('https://static.pexels.com/photos/165263/pexels-photo-165263.jpeg');">
   <div class="banner-content">
-    <h1>Make real friends</h1>
-    <p>Always open for a new buddy</p>
+    <h1>WANNA MAKE NEW FRIENDS ?</h1>
+    <p>Make real friends!</p>
     <form action="/results" method="get" class="form-inline" name="search">
           <input type="text" class="form-control margin-xs" name="city" placeholder="Lisbon">
           <input type="text" class="form-control margin-xs" name="gender" placeholder="gender">
@@ -14,7 +14,7 @@
               <%= content_for(:after_js) do %>
               <script type="text/javascript">
                   $(function () {
-                      $('#Datetimepicker').datetimepicker();
+                      $('#Datetimepicker').datetimepicker({ dateFormat: 'yyyy-mm-dd' });
                   });
               </script>
               <% end %>

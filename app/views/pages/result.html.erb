@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-<div class="container">
+<div class="container text-center">
   <div class="row">
 
     <form action="/results" method="get" class="form-inline" name="search">
@@ -18,7 +18,7 @@
               <%= content_for(:after_js) do %>
               <script type="text/javascript">
                   $(function () {
-                      $('#Datetimepicker').datetimepicker();
+                      $('#Datetimepicker').datetimepicker({ dateFormat: 'yyyy-mm-dd' });
                   });
               </script>
               <% end %>
@@ -36,7 +36,7 @@
   <% @friends.each do |friend| %>
 
     <div class="col-xs-12 col-sm-4">
-      <%= render 'shared/card', f: friend, size: 'vertical-card'  %>
+      <%= render 'shared/card', f: friend, locals: {date: params["date"]}, size: 'vertical-card'  %>
       <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> - <%= friend.price %>€/hour </div>
       <br>
       <div> <%= friend.description %> </div>

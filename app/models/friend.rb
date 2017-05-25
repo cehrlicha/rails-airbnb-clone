@@ -24,12 +24,13 @@ class Friend < ApplicationRecord
   end
 
   def self.search(search)
+
       date = DateTime.parse(search["date"])
       results = []
 
-      results << where("city LIKE ? AND gender = ? AND age = ?", "%"+search["city"]+"%", search["gender"], search["age"].to_i)
+      # results << where("city LIKE ? AND gender = ? AND age = ?", "%"+search["city"]+"%", search["gender"], search["age"].to_i)
         # byebug
-      # results << joins(:friend_availabilities).where("start_daytime <= ? AND end_daytime >= ?", date, date )
+      results << joins(:friend_availabilities).where("start_daytime <= ? AND end_daytime >= ? AND city LIKE ? AND gender = ? AND age = ?", date, date, "%"+search["city"]+"%", search["gender"], search["age"].to_i )
 
       results.flatten.uniq
   end
