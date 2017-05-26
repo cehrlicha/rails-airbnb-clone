@@ -18,7 +18,7 @@ user1 = User.create(
   first_name: "Annakin",
   username: "askywalker",
   phone_number: "0475447014",
-  image: Faker::Avatar.image
+  image: "http://res.cloudinary.com/cehrlicha/image/upload/v1495797061/annakin_dogbcx.jpg"
 )
 
 user2 = User.create(
@@ -28,7 +28,7 @@ user2 = User.create(
   first_name: "Luke",
   username: "lskywalker",
   phone_number: "0477372777",
-  image: Faker::Avatar.image
+  image: "http://res.cloudinary.com/cehrlicha/image/upload/v1495797061/luke_jm790u.jpg"
 )
 
 user3 = User.create(
@@ -38,7 +38,7 @@ user3 = User.create(
   first_name: "Dark",
   username: "dvador",
   phone_number: "0485102063",
-  image: Faker::Avatar.image
+  image: "http://res.cloudinary.com/cehrlicha/image/upload/v1495797061/darkvador_udk6nw.jpg"
 )
 
 puts "Creating Friends"
