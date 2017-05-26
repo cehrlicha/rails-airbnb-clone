@@ -22,6 +22,7 @@ class FriendsController < ApplicationController
     # byebug
     @friend = Friend.find(params[:id])
     @date = params[:date]
+    @average_rating =
   end
 
   def new
