@@ -29,16 +29,26 @@
 </div>
 
 
-
 <div class="container">
   <div class="row">
-  <% @sorted_friends.each do |friend| %>
-      <div class="col-xs-6 col-sm-4">
-        <%= render 'shared/card', f: friend, size: 'horizontal-card' %>
-        <div><%= friend.name %> - <%= friend.age %> y.o. - <%= friend.city %> - <%= friend.price %>€/hour</div>
-        <div> Av. rating: <%= friend.average_friend_rating %> </div>
 
+    <% @sorted_friends.each do |friend| %>
+    <div class="col-xs-6 col-sm-4">
+      <!-- insert <div class="card"> -->
+
+
+      <%= link_to friend_path(friend) do %>
+      <div class="vertical-card" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("<%= cl_image_path friend.photo, height: 400, width: 400, crop: :crop, gravity: :face %>");'>
+
+        <div class="card-description">
+          <h2><%= friend.name %></h2>
+          <p><%= friend.price %>€/hour - Av. rating: <%= friend.average_friend_rating %></p>
+        </div>
       </div>
-  <% end %>
+
+      <% end %>
+
+    </div>
+    <% end %>
   </div>
-</div>
+   </div>
