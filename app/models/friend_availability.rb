@@ -4,6 +4,7 @@ class FriendAvailability < ApplicationRecord
   def self.pending(date, friend, buyer)
       @availabilities = FriendAvailability.where(:friend_id => friend.id)
       @availabilities.each do |av|
+        byebug
         if DateTime.parse(date) >= av.start_daytime && DateTime.parse(date) <= av.end_daytime && (av.booked != 1 || av.booked != nil) && (av.pending != 1 || av.pending != nil)
 
           # av.pending = 1

@@ -70,7 +70,7 @@
 <div class="container">
   <div class="row">
   <h1>Pending requests</h1>
-    <table class="table table-striped">
+    <table class="table table-striped" id="pendingrequest">
       <thead>
         <tr>
           <th>ID</th>
@@ -90,7 +90,7 @@
               <td><%= friend.id %></td>
               <td><%= av.friend.name %></td>
               <td><%= User.find(av.buyer_id.to_i).first_name %> <%= User.find(av.buyer_id.to_i).last_name %></td>
-              <td><%= av.pending %></td>
+              <td><%= av.pending ? "Yes" : "No" %></td>
               <td> <%= link_to "Confirm", booked_path({
                       id: current_user.id,
                       friend_id: friend.id,
