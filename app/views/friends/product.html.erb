@@ -1,60 +1,38 @@
-<div class="wrapper">
-  <div class="friendpictures">
-    <div class="friendbanner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(u);">
-      <div class="imagebox">
-        <div class="flex">
-          <div class="ppimage">
-            <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :fill %>
+<div class="profile-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(u);">
+
+</div>
+  <div class="container">
+  <div class="profile-details">
+
+    <div class="profile-pic col-xs-6">
+      <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :fill %>
+    </div>
+
+      <div class="col-xs-6">
+
+        <div class="profile-desc">
+          <h2> <%= @friend.first_name + " " + @friend.last_name  %> </h2>
+          <h3> <%= @friend.description %> </h3>
+          <h3> <%= @friend.age %> years old </h3>
+          <h3> <%= @friend.price %> €/h </h3>
+          <h3> owner: <%= @friend.user.first_name %> <%= @friend.user.last_name %> </h3>
+
+          <div>
+              <% @friend.friend_availabilities.each do |av| %>
+              <p>Available from <%= Date::DAYNAMES[av.start_daytime.wday] %> <%= av.start_daytime.to_date  %> to <%= Date::DAYNAMES[av.end_daytime.wday] %> <%= av.end_daytime.to_date %></p>
+              <% end %>
           </div>
-          <div class="ppname">
-            <h2> <%= @friend.name %> </h2>
-          </div>
+
         </div>
+
       </div>
-    </div>
-  </div>
-
-  <div id="productinfos" class="container text-center">
-  <div class="row" id="info_bookingbox">
-    <div id="info-wrapper">
-    <div class="col-xs-6">
-      <div class="frienddescritpion">
-          <h4> Description: </h4>
-          <p> <%= @friend.description %> </p>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <h4> Information about <%= @friend.name %></h4>
-      <p> Price: <%= @friend.price %>€/h</p>
-      <div>
-        <% @friend.friend_availabilities.each do |av| %>
-          <p>Available from <%= Date::DAYNAMES[av.start_daytime.wday] %> <%= av.start_daytime.to_date  %> to <%= Date::DAYNAMES[av.end_daytime.wday] %> <%= av.end_daytime.to_date %></p>
-          <% end %>
-      </div>
-    </div>
-    </div>
-  </div>
 
   </div>
 
-  </div>
-  <div class="flex">
-    <div style="margin-right: 10px"  class=" text-center description">
-      <%= link_to "Back to list", root_path, class: "btn btn-primary" %>
-    </div>
-    <div class=" text-center description">
-
-      <%= link_to "Book a friend!", {controller: 'sales',
-             action: 'new',
-             friend_id: @friend.id,
-             date: params["date"]}, class: "btn btn-success" %>
-    </div>
-  </div>
-
-  <table class="table table-striped">
+<table class="table table-striped">
       <thead>
         <tr>
-          <th>Buyer</th>
+          <th>Product</th>
           <th>Rating</th>
           <th>Review</th>
           <th colspan="3"></th>
@@ -80,4 +58,65 @@
       </tbody>
     </table>
 
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Owner</th>
+          <th>Rating</th>
+          <th>Review</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @friend.sales.each do |sale| %>
+          <% if !sale.rating.nil? %>
+        <tr>
+                <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
+                <td><%= sale.rating.buyer_rating %></td>
+                <td><%= sale.rating.buyer_review %></td>
+        </tr>
+        <% else %>
+        <tr>
+          <td>No Ratings for this owner</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+<div class="flex">
+    <div style="margin-right: 10px"  class=" text-center description">
+      <%= link_to "Back to list", root_path, class: "btn btn-primary" %>
+    </div>
+    <div class=" text-center description">
+
+      <%= link_to "Book a friend!", {controller: 'sales',
+             action: 'new',
+             friend_id: @friend.id,
+             date: params["date"]}, class: "btn btn-success" %>
+    </div>
+  </div>
+  </div>
+
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
