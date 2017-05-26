@@ -1,4 +1,4 @@
-<div class="profile-banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.5) 0%, rgba(250,250,250,0.1) 80%), url('http://www.itechscope.gr/img/banner-image-about.jpg');" >
+<div class="profile-banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.5) 0%, rgba(250,250,250,0.1) 80%), url('http://www.itechscope.gr/img/banner-image-about.jpg');">
 
 </div>
   <div class="container ">
@@ -30,12 +30,13 @@
                 <p style="font-weight: bold; margin:0;">Availabilities:</p>
 
                 <% @friend.friend_availabilities.each do |av| %>
-                <p>From <%= Date::DAYNAMES[av.start_daytime.wday] %> <%= av.start_daytime.to_date  %> to <%= Date::DAYNAMES[av.end_daytime.wday] %> <%= av.end_daytime.to_date %></p>
+                <p><%= Date::DAYNAMES[av.start_daytime.wday] %> <%= av.start_daytime.to_date  %> </p>
                 <% end %>
             </div>
         </div>
     </div>
   </div>
+
   <div class="container" id="product-tables-container">
         <table id="buyer-rating-table" class="table table-striped rating-table">
           <thead>
@@ -79,7 +80,7 @@
             <% @friend.sales.each do |sale| %>
               <% if !sale.rating.nil? %>
                 <tr>
-                  <td><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
+                  <td><%= sale.friend.user.first_name %> <%= sale.friend.user.last_name %></td>
                   <td><%= sale.rating.seller_rating %></td>
                   <td><%= sale.rating.seller_review %></td>
                 </tr>
@@ -96,23 +97,23 @@
   </div>
 
     <div  class="container text-center">
-      <div class="row">
-        <%= simple_form_for @sale, :url => new_sale_path, :method => :get do |f| %>
-        <div id="product-page-simpleform" class="input-group date">
-          <%= f.input :date, :input_html => { value: params[:date], class: "form-control", id: :Datetimepicker }  %>
-          <%= f.hidden_field :friend_id, value: @friend.id%>
-          <%= f.submit "Submit", class: "btn btn-primary", style:"margin-top: 8px" %>
-        </div>
-        <% end %>
+        <div style="margin-left: 350px;">
+          <%= simple_form_for @sale, :url => new_sale_path, :method => :get do |f| %>
+          <div id="product-page-simpleform" class="input-group date">
+            <%= f.input :date, :input_html => { value: params[:date], class: "form-control", id: :Datetimepicker }  %>
+            <%= f.hidden_field :friend_id, value: @friend.id%>
+            <%= f.submit "Submit", class: "btn btn-primary", style:"margin-top: 8px" %>
+          </div>
+          <% end %>
 
-        <%= content_for(:after_js) do %>
-        <script type="text/javascript">
-          $(function () {
-            $('#Datetimepicker').datetimepicker({ dateFormat: 'yyyy-mm-dd' });
-          });
-        </script>
-        <% end %>
-      </div>
+          <%= content_for(:after_js) do %>
+          <script type="text/javascript">
+            $(function () {
+              $('#Datetimepicker').datetimepicker({ dateFormat: 'yyyy-mm-dd' });
+            });
+          </script>
+          <% end %>
+        </div>
     </div>
     <div id="product-back-to-list" class="flex">
       <div style="margin-right: 10px"  class=" text-center description">
