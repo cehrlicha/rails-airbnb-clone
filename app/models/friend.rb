@@ -1,7 +1,7 @@
 class Friend < ApplicationRecord
-  # geocoded_by :address
-  # after_validation :geocode, if: :address_changed?
-  # after_validation :lat_changed?
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+  after_validation :lat_changed?
 
   belongs_to :user
   has_many :sales, dependent: :destroy
