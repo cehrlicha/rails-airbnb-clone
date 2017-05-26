@@ -1,8 +1,8 @@
 class SalesController < ApplicationController
 
   def new
-    @friend = Friend.find(params[:friend_id])
-    @date = params[:date]
+    @friend = Friend.find(params[:sale][:friend_id])
+    @date = params[:sale][:date]
   end
   def create
     @date = params[:date]
@@ -19,4 +19,5 @@ class SalesController < ApplicationController
 
     end
   end
+
 end
