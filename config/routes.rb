@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'pending', to: "friend_availabilies#pending"
   get 'booked', to: "friend_availabilies#booked"
+  resources :friend_availabilies, only: [:create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
