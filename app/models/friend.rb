@@ -56,15 +56,15 @@ class Friend < ApplicationRecord
   end
 
 
-  # def lat_changed?
-  #   if (self.address_changed?)
-  #     if !(self.latitude_changed?)
-  #       self.errors.add(:address, "is not valid")
-  #       return false
-  #     end
-  #   end
-  #   return true
-  # end
+  def lat_changed?
+    if (self.address_changed?)
+      if !(self.latitude_changed?)
+        self.errors.add(:address, "is not valid")
+        return false
+      end
+    end
+    return true
+  end
 end
 
 # city age gender
