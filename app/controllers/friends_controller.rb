@@ -22,7 +22,7 @@ class FriendsController < ApplicationController
     # byebug
     @friend = Friend.find(params[:id])
     @date = params[:date]
-    @average_rating =
+    @average_rating = @friend.average_friend_rating
     @sale = Sale.new
   end
 
