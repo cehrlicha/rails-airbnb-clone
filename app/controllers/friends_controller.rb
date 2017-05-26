@@ -24,6 +24,11 @@ class FriendsController < ApplicationController
     @date = params[:date]
     @average_rating = @friend.average_friend_rating
     @sale = Sale.new
+
+    @hash = Gmaps4rails.build_markers(@friend) do |friend, marker|
+      marker.lat friend.latitude
+      marker.lng friend.longitude
+    end
   end
 
   def new
