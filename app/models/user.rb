@@ -31,5 +31,17 @@ class User < ApplicationRecord
     return user
   end
 
-
+  def request
+    requests = 0
+    self.friends.all.each do |friend|
+      unless friend.friend_availabilities.nil?
+          friend.friend_availabilities.each do |av|
+            if av.pending == true
+              requests += 1
+            end
+        end
+      end
+    end
+    requests
+  end
 end

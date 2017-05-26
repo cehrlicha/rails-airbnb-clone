@@ -19,7 +19,7 @@
     <%= link_to current_user, class: "navbar-wagon-item navbar-wagon-link" do %>
       <div class="badge-container">
         <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue" id="notification"></div>
+        <div class="badge badge-blue" id="notification"><%= current_user.request %></div>
       </div>
     <% end %>
 

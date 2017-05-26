@@ -16,7 +16,6 @@ class FriendsController < ApplicationController
       marker.lat friend.latitude
       marker.lng friend.longitude
     end
-
   end
 
   def product
