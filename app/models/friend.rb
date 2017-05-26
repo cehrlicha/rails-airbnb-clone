@@ -34,6 +34,26 @@ class Friend < ApplicationRecord
 
       results.flatten.uniq
   end
+  def average_friend_rating
+    rating_sum = 0
+    rating_count = 0
+    if self.sales != nil
+    self.sales.each do |sale|
+      if sale.rating != nil
+      rating_count += 1
+      rating_sum += sale.rating.buyer_rating
+      end
+    end
+    if rating_count != 0
+      return Float(rating_sum) / Float(rating_count)
+    else
+      return "no av rating"
+    end
+    else
+      return "no av rating"
+    end
+  end
+
 
 end
 
