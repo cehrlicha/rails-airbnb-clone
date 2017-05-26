@@ -12,6 +12,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(
       start_daytime: @date,
       end_daytime: @date,
+      location: "Portugal",
       friend: @friend,
       buyer: current_user)
   end

@@ -115,31 +115,41 @@ puts "Create availibity"
 available1 = FriendAvailability.create(
   start_daytime: DateTime.new(2017,6,8),
   end_daytime: DateTime.new(2017,6,8),
-  friend: friend1
+  friend: friend1,
+  booked: false,
+  pending: false
   )
 
 available2 = FriendAvailability.create(
   start_daytime: DateTime.new(2017,6,10),
   end_daytime: DateTime.new(2017,6,10),
-  friend: friend2
+  friend: friend2,
+  booked: false,
+  pending: false
   )
 
 available3 = FriendAvailability.create(
   start_daytime: DateTime.new(2017,6,15),
   end_daytime: DateTime.new(2017,6,15),
-  friend: friend3
+  friend: friend3,
+  booked: false,
+  pending: false
   )
 
 available4 = FriendAvailability.create(
   start_daytime: DateTime.new(2017,6,1),
   end_daytime: DateTime.new(2017,6,1),
-  friend: friend4
+  friend: friend4,
+  booked: false,
+  pending: false
   )
 
 available5 = FriendAvailability.create(
   start_daytime: DateTime.new(2017,6,25),
   end_daytime: DateTime.new(2017,6,25),
-  friend: friend5
+  friend: friend5,
+  booked: false,
+  pending: false
   )
 
 puts "Create Sales"
@@ -149,7 +159,7 @@ sale1 = Sale.create(
   location: "Portugal",
   friend: friend1,
   buyer: user2,
-  )
+ )
 
 sale2 = Sale.create(
   start_daytime: DateTime.new(2017,4,rand(1..10)),

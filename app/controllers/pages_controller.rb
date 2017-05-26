@@ -30,4 +30,5 @@ class PagesController < ApplicationController
     end
     return sorted_friend_array
   end
+
 end

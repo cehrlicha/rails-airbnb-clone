@@ -4,8 +4,6 @@ class UsersController < ApplicationController
     @friends = @user.friends
     @rating = Rating.new
 
-
-
   end
 
   def name

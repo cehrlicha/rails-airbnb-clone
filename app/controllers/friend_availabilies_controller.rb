@@ -1,7 +1,6 @@
 class FriendAvailabiliesController < ApplicationController
 
   def pending
-
     @date = params[:date]
     @booked_friend = Friend.find(params[:friend_id])
     @buyer = params[:buyer]
