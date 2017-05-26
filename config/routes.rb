@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/results' , to: "pages#result"
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :edit, :update] do
     resources :friends
   end
 

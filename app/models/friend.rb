@@ -1,6 +1,7 @@
 class Friend < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  after_validation :lat_changed?
 
   belongs_to :user
   has_many :sales, dependent: :destroy
@@ -55,6 +56,15 @@ class Friend < ApplicationRecord
   end
 
 
+  def lat_changed?
+    if (self.address_changed?)
+      if !(self.latitude_changed?)
+        self.errors.add(:address, "is not valid")
+        return false
+      end
+    end
+    return true
+  end
 end
 
 # city age gender
