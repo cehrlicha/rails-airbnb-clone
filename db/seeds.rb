@@ -113,32 +113,32 @@ puts "Database updated with 3 users and 5 friends"
 
 puts "Create availibity"
 available1 = FriendAvailability.create(
-  start_daytime: DateTime.new(2017,5,rand(1..10)),
-  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  start_daytime: DateTime.new(2017,6,8),
+  end_daytime: DateTime.new(2017,6,8),
   friend: friend1
   )
 
 available2 = FriendAvailability.create(
-  start_daytime: DateTime.new(2017,5,rand(1..10)),
-  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  start_daytime: DateTime.new(2017,6,10),
+  end_daytime: DateTime.new(2017,6,10),
   friend: friend2
   )
 
 available3 = FriendAvailability.create(
-  start_daytime: DateTime.new(2017,5,rand(1..10)),
-  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  start_daytime: DateTime.new(2017,6,15),
+  end_daytime: DateTime.new(2017,6,15),
   friend: friend3
   )
 
 available4 = FriendAvailability.create(
-  start_daytime: DateTime.new(2017,5,rand(1..10)),
-  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  start_daytime: DateTime.new(2017,6,1),
+  end_daytime: DateTime.new(2017,6,1),
   friend: friend4
   )
 
 available5 = FriendAvailability.create(
-  start_daytime: DateTime.new(2017,5,rand(1..10)),
-  end_daytime: DateTime.new(2017,5,rand(10..20)),
+  start_daytime: DateTime.new(2017,6,25),
+  end_daytime: DateTime.new(2017,6,25),
   friend: friend5
   )
 

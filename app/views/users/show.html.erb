@@ -67,6 +67,51 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+  <h1>Pending requests</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Friend</th>
+          <th>Buyer</th>
+          <th>Availability</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.friends.all.each do |friend| %>
+        <tr>
+          <% unless friend.friend_availabilities.nil?
+            friend.friend_availabilities.each do |av|%>
+            <% if av.pending == true %>
+              <td><%= friend.id %></td>
+              <td><%= av.friend.name %></td>
+              <td><%= User.find(av.buyer_id.to_i).first_name %> <%= User.find(av.buyer_id.to_i).last_name %></td>
+              <td><%= av.pending %></td>
+              <td> <%= link_to "Confirm", booked_path({
+                      id: current_user.id,
+                      friend_id: friend.id,
+                      buyer_id: av.buyer_id}),
+                      class: "btn btn-warning" %> </td>
+           <% end %>
+           <% end %>
+          <% end %>
+
+
+
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+  </div>
+</div>
+
 
 
 <div class="container">

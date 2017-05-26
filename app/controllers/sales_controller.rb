@@ -1,9 +1,10 @@
 class SalesController < ApplicationController
 
   def new
-    @friend = Friend.find(params[:friend_id])
-    @date = params[:date]
+    @friend = Friend.find(params[:sale][:friend_id])
+    @date = params[:sale][:date]
   end
+
   def create
     @date = params[:date]
     @friend = Friend.find(params[:friend_id])
@@ -13,10 +14,6 @@ class SalesController < ApplicationController
       end_daytime: @date,
       friend: @friend,
       buyer: current_user)
-
-    if @sale.save
-    else
-
-    end
   end
+
 end
