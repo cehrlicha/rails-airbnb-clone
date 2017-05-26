@@ -3,6 +3,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @friends = @user.friends
     @rating = Rating.new
+
+
+
   end
 
   def name

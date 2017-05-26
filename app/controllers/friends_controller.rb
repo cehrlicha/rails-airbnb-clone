@@ -9,7 +9,7 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
     @user = User.find(params[:user_id])
 
-    # @friend_geo = Friend.where.not(latitude: nil, longitude: nil)
+
 
     @hash = Gmaps4rails.build_markers(@friend) do |friend, marker|
       marker.lat friend.latitude
@@ -23,6 +23,7 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
     @date = params[:date]
     @average_rating =
+    @sale = Sale.new
   end
 
   def new
