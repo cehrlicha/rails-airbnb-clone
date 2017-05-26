@@ -8,6 +8,7 @@ class FriendsController < ApplicationController
   def show
     @friend = Friend.find(params[:id])
     @user = User.find(params[:user_id])
+    @available = FriendAvailability.new
 
 
 
@@ -74,7 +75,7 @@ class FriendsController < ApplicationController
 
   private
   def friend_params
-    params.require(:friend).permit(:first_name, :last_name, :age, :description, :price, :gender, :city, :user_id, :photo, :photo_cache)
+    params.require(:friend).permit(:first_name, :last_name, :age, :description, :price, :gender, :city, :user_id, :photo, :address, :photo_cache)
   end
 
 

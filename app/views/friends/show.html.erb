@@ -26,6 +26,20 @@
 
   </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+
+  <%= simple_form_for [@available], :url => friend_availabilies_path, :method => :post do |f| %>
+      <%= f.input :start_daytime, placeholder: "2017/05/05"%>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :friend_id, value: @friend.id %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+
+    </div>
+  </div>
+</div>
 <div id="map" style="width: 100%; height: 600px;"></div>
 
 <% content_for(:after_js) do %>

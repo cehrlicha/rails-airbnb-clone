@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/results' , to: "pages#result"
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :edit, :update] do
     resources :friends
   end
 
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'pending', to: "friend_availabilies#pending"
   get 'booked', to: "friend_availabilies#booked"
+  resources :friend_availabilies, only: [:create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
