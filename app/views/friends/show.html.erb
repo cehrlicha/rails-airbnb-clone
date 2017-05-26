@@ -4,7 +4,7 @@
   <div class="profile-details">
 
     <div class="profile-pic col-xs-6">
-      <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @friend.photo, height: 300, width: 400, crop: :crop, gravity: :face %>
     </div>
 
       <div class="col-xs-6">
